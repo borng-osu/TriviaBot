@@ -1,0 +1,45 @@
+{
+    "types": [
+        {
+            "tag": "greeting",
+            "input": [
+                "hi",
+                "hello",
+                "hey",
+                "how are you",
+                "what's up",
+                "yo",
+                "wassup",
+                "sup",
+                "what is going on"
+            ],
+            "response": [
+                "Hello! Welcome to TriviaBot!",
+                "Hi again! It's trivia time!",
+                "Hey! What sort of trivia are you looking for?"
+            ]
+        },
+        {
+            "tag": "bye",
+            "input": [
+                "bye",
+                "goodbye",
+                "ciao",
+                "have a good",
+                "see you",
+                "see ya",
+                "ttyl",
+                "cya",
+                "au revoir",
+                "later",
+                "see you tomorrow"
+            ],
+            "response": [
+                "Tune in next time!",
+                "Don't forget to tell your friends!",
+                "Come back again soon!",
+                "Until next time. I'm TriviaBot!"
+            ]
+        }
+    ]
+}
