@@ -1,5 +1,0 @@
-TriviaBot
-    - check if history
-    - check user input
-    - deliver response
-    
