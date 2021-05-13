@@ -1,6 +1,7 @@
 import random
 import json
 import torch
+import wikipedia
 from model import NeuralNet
 from input_handler import word_bag, tokenize
 
@@ -24,12 +25,32 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "TriviaBot"
-while True:
-    sentence = input("You: ")
-    if sentence == "quit":
-        break
+
+def chat(msg):
+    if msg == "How many states are in the United States?":
+        return 50
+
+    if msg == "quiz":
+        return "How many states are in the United States?"
+
+    if msg == "50":
+        return "Correct!"
+
+    if msg == "I don't know":
+        return "Sorry, the answer is on July 1, 2002"
     
-    sentence = tokenize(sentence)
+    sentence = tokenize(msg)
+
+    if sentence[0].lower() == "what" and (sentence[1] == "is" or sentence[1] == "are"):
+        sentence = sentence[2:len(sentence) - 1]
+
+        search_term = ""
+
+        for i in range(len(sentence)):
+            search_term += sentence[i] + " "
+
+        return wikipedia.summary(search_term, sentences=3)
+
     X = word_bag(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X)
@@ -44,6 +65,5 @@ while True:
     if prob.item() > 0.75:
         for type in convo["types"]:
             if tag == type["tag"]:
-                print(f"{bot_name}: {random.choice(type['response'])}")
-    else:
-        print(f"{bot_name}: I don't understand, nimrod.")
+                return random.choice(type['response'])
+    return "I don't understand, nimrod."

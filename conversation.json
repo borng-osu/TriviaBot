@@ -40,6 +40,25 @@
                 "Come back again soon!",
                 "Until next time. I'm TriviaBot!"
             ]
+        },
+        {
+            "tag": "options",
+            "input": [
+                "what can you do",
+                "what do you do",
+                "how do you work",
+                "options",
+                "can i see a tutorial",
+                "how do you get trivia",
+                "how can i quiz",
+                "i need help",
+                "help me",
+                "i am lost",
+                "i don't know what to do"
+            ],
+            "response": [
+                "I retrieve brief Wiki summaries when you ask me 'What is x?', 'What are x?' or 'Who is x?' Ensure that x is surrounded by quotes! \n\nI can also find factoids regarding numerical figures. For example, you can ask 'When did x happen?' or 'When did x live?' The verb can be whatever is relevant, if I can find it on the Wikipedia page. You can also ask questions such as 'How many y are in x?' These are the only two questions types I can handle right now. Again, make sure x is surrounded by quotes!\n\nLastly, I can quiz you. If you simply enter 'quiz', I will find a numerical data question to ask about the last page looked up. Have fun!"
+            ]
         }
     ]
 }
