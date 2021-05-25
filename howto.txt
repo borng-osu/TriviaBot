@@ -1,0 +1,20 @@
+                        TRIVIABOT COMMANDS
+
+BASIC KEYWORDS
+
+What/Who is ___?
+            Replace ___ with query to receive wiki summary.
+
+Today
+            Get today's date.
+
+Tell me a joke.
+            Hear a funny joke!
+
+ADVANCED KEYWORDS
+
+How many x are in y?
+            Find out how many x are in y via wiki query.
+
+When was x y-ed?
+            Find out the date for when an action, y, occurred to x.

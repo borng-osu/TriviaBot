@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import filedialog
 from chat import chat, bot_name
 
 MAIN_BG = "#474647"
@@ -7,6 +8,7 @@ TEXT = "#EDFDFA"
 
 HEAD_FONT = "Helvetica 13 bold"
 FONT = "Helvetica 12"
+ABOUT = "TEST!"
 
 class TriviaBot:
 
@@ -22,9 +24,17 @@ class TriviaBot:
         self.window.resizable(width=False,height=False)
         self.window.configure(width=520, height=640, bg=MAIN_BG)
 
-        # creates header
-        header = Label(self.window, bg=MAIN_BG, fg=TEXT, text="Welcome to TriviaBot", font=HEAD_FONT, pady=15)
+        # creates header space
+        header = Label(self.window, bg=MAIN_BG, height=35)
         header.place(relwidth=1)
+
+        # creates header label
+        header_lbl = Label(header, text="Welcome to TriviaBot", font=HEAD_FONT, fg=TEXT, bg=MAIN_BG, pady=15)
+        header_lbl.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
+
+        # hover info
+        info_btn = Button(header, text="How To", fg="#1F1E1F", font=HEAD_FONT, width=20, bg=SECOND_BG, command=self.click)
+        info_btn.place(relx=0.77, rely=0.008, relheight=0.06, relwidth=0.22)
 
         # creates div
         line = Label(self.window, width=480, bg=SECOND_BG)
@@ -54,7 +64,7 @@ class TriviaBot:
         send_btn = Button(bottom_label, text="Send", fg="#1F1E1F", font=HEAD_FONT, width=20, bg=SECOND_BG, command=lambda: self._on_enter(None))
         send_btn.place(relx=0.77, rely=0.008, relheight=0.06, relwidth=0.22)
 
-    def _on_enter(self, event):
+    def _on_enter(self, e):
         msg = self.msg_entry.get()
         self._insert_msg(msg, "You")
 
@@ -73,6 +83,36 @@ class TriviaBot:
         self.text_widget.configure(state=NORMAL)
         self.text_widget.insert(END, response)
         self.text_widget.configure(state=DISABLED)
+
+    def click(e):
+        pop = Toplevel()
+        pop.title("How to TriviaBot")
+        pop.geometry("350x450")
+        pop.configure(bg=SECOND_BG)
+
+        head = Label(pop, height=50)
+        head.place(relwidth=1)
+
+        title = Label(head, text="TriviaBot Commands", font=HEAD_FONT, fg=TEXT, bg=MAIN_BG, pady=1)
+        title.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
+
+        body = Text(pop, height=200, bg=MAIN_BG, fg=TEXT, font=FONT)
+        body.place(relwidth=1, rely=0.2)
+
+        info = open("howto.txt", 'r')
+        data = info.read()
+        body.insert(END, data)
+        info.close()
+
+        scroll = Scrollbar(body)
+        scroll.place(relheight=1, relx=0.974)
+        scroll.configure(command=body.yview)
+
+
+        body.configure(cursor="arrow", state=DISABLED)
+
+
+    
 
 if __name__ == "__main__":
     app = TriviaBot()
