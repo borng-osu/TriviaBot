@@ -1,6 +1,9 @@
+from os import write
 from tkinter import *
 from tkinter import filedialog
 from chat import chat, bot_name
+from pathlib import Path
+import os
 
 MAIN_BG = "#474647"
 SECOND_BG = "#3E5A79"
@@ -10,10 +13,19 @@ HEAD_FONT = "Helvetica 13 bold"
 FONT = "Helvetica 12"
 ABOUT = "TEST!"
 
+def write_log(msg):
+    with open("text-data/log.txt", "a+") as log:
+        log.write(msg)
+
+def delete_log():
+    if os.path.exists("text-data/log.txt"):
+        os.remove("text-data/log.txt")
+
 class TriviaBot:
 
     def __init__(self):
         self.window = Tk()
+        self.start = 1
         self._setup_main_window()
 
     def run(self):
@@ -43,6 +55,8 @@ class TriviaBot:
         # text widget
         self.text_widget = Text(self.window, width=20, height=2, bg=MAIN_BG, fg=TEXT, font=FONT, padx=5, pady=5)
         self.text_widget.place(relheight=0.745, relwidth=1, rely=0.08)
+        if self.start:
+            self.load_log()
         self.text_widget.configure(cursor="arrow", state=DISABLED)
 
         # scrolling functionality
@@ -56,6 +70,7 @@ class TriviaBot:
 
         # message input
         self.msg_entry = Entry(bottom_label, bg="#EDFDFA", fg="#1F1E1F", font=FONT)
+        
         self.msg_entry.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
         self.msg_entry.focus()
         self.msg_entry.bind("<Return>", self._on_enter)
@@ -74,12 +89,26 @@ class TriviaBot:
         
         self.msg_entry.delete(0, END)
 
+        if msg.lower() == "clear":
+            self.text_widget.configure(state=NORMAL)
+            self.text_widget.delete(1.0, END)
+            self.text_widget.configure(state=DISABLED)
+            return
+        elif msg.lower() == "clear history":
+            self.text_widget.configure(state=NORMAL)
+            self.text_widget.delete(1.0, END)
+            self.text_widget.configure(state=DISABLED)
+            delete_log()
+            return
+
         msg_disp = f"{sender}: {msg}\n\n"
+        write_log(msg_disp)
         self.text_widget.configure(state=NORMAL)
         self.text_widget.insert(END, msg_disp)
         self.text_widget.configure(state=DISABLED)
 
         response = f"{bot_name}: {chat(msg)}\n\n"
+        write_log(response)
         self.text_widget.configure(state=NORMAL)
         self.text_widget.insert(END, response)
         self.text_widget.configure(state=DISABLED)
@@ -99,7 +128,7 @@ class TriviaBot:
         body = Text(pop, height=200, bg=MAIN_BG, fg=TEXT, font=FONT)
         body.place(relwidth=1, rely=0.2)
 
-        info = open("howto.txt", 'r')
+        info = open("text-data/howto.txt", 'r')
         data = info.read()
         body.insert(END, data)
         info.close()
@@ -110,6 +139,14 @@ class TriviaBot:
 
 
         body.configure(cursor="arrow", state=DISABLED)
+
+    def load_log(self):
+        if Path("text-data/log.txt").is_file():
+            log = open("text-data/log.txt", 'r')
+            history = log.read()
+            self.text_widget.insert(END, history)
+        self.start = 0
+        return
 
 
     

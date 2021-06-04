@@ -1,0 +1,78 @@
+You: Today
+
+TriviaBot: Today is June 04, 2021
+
+You: date
+
+TriviaBot: Today is June 04, 2021
+
+You: How many member states are in the United Nations
+
+You: How many games are in Resident Evil?
+
+TriviaBot: 50 Games
+
+You: How many episodes are in Full House?
+
+TriviaBot: 192 episodes
+
+You: How many episodes are in Seinfeld?
+
+TriviaBot: 180 episodes
+
+You: How many episodes are in Mad Men?
+
+TriviaBot: Looks like the Wikipedia module failed. Sorry!
+
+You: How many episodes are in The Simpsons?
+
+TriviaBot: 706 episodes
+
+You: Hello!
+
+TriviaBot: Hey! What sort of trivia are you looking for?
+
+You: Today's date?
+
+TriviaBot: Today is June 04, 2021
+
+You: What is Resident Evil?
+
+TriviaBot: Resident Evil, also known as Biohazard, is a Japanese survival horror video game series and media franchise created by Capcom. The franchise follows stories about biological weapons and viral incidents. The game series consists of survival horror, third-person shooter, and first-person shooter games.
+
+You: What is The Simpsons?
+
+TriviaBot: The Simpsons is an American animated sitcom created by Matt Groening for the Fox Broadcasting Company. The series is a satirical depiction of American life, epitomized by the Simpson family, which consists of Homer, Marge, Bart, Lisa, and Maggie. The show is set in the fictional town of Springfield and parodies American culture and society, television, and the human condition.
+
+You: How many episodes are in The Simpsons?
+
+TriviaBot: 706 episodes
+
+You: How many countries are in Asia?
+
+TriviaBot: 49 countries
+
+You: Bye!
+
+TriviaBot: Come back again soon!
+
+You: quiz me!
+
+TriviaBot: How many episodes are in The Simpsons?
+
+You: 706
+
+TriviaBot: Correct!
+
+You: quiz again!
+
+TriviaBot: How many countries are in Asia?
+
+You: 50
+
+TriviaBot: Sorry, the answer is 49 countries.
+
+You: Bye!
+
+TriviaBot: Don't forget to tell your friends!
+

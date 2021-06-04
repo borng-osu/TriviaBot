@@ -14,7 +14,7 @@ response_train = []
 all_words = []
 tags = []
 word_tag = []
-with open('conversation.json', 'r') as con:
+with open('text-data/conversation.json', 'r') as con:
     convo = json.load(con)
 for type in convo["types"]:
     tag = type["tag"]
@@ -95,7 +95,7 @@ data = {
     "tags": tags    
 }
 
-FILE = "data.pth"
+FILE = "text-data/data.pth"
 torch.save(data, FILE)
 
 print(f'training complete. file saved to {FILE}')

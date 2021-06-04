@@ -1,2 +1,0 @@
-TriviaBot: Hello!
-User: Hey!
